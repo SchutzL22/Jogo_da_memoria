@@ -1,0 +1,237 @@
+/* Configurações Gerais e Fontes */
+body {
+    font-family: 'Fredoka One', cursive, sans-serif;
+    background-color: #87CEEB; /* Azul céu claro */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+h1 {
+    color: #FF6347; /* Tomate */
+    text-shadow: 2px 2px #FFF;
+}
+
+/* Container Principal */
+.container {
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 900px;
+}
+
+/* Página de Menu */
+.menu-container p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-menu, .btn-voltar {
+    display: inline-block;
+    background-color: #FFD700; /* Dourado */
+    color: #4B0082; /* Indigo */
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 4px #DAA520;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-menu:hover, .btn-voltar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px #DAA520;
+}
+
+.btn-menu:active, .btn-voltar:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #DAA520;
+}
+
+/* Botão Secreto */
+#btn-secreto {
+    background-color: #89cfeb; /* Cor muito próxima ao fundo */
+    color: #89cfeb; /* Cor do texto igual ao fundo */
+    box-shadow: 0 4px #7abde0;
+}
+#btn-secreto:hover {
+    background-color: #92d5f0;
+    color: #FFF; /* Revela o texto ao passar o mouse */
+    box-shadow: 0 6px #7abde0;
+}
+
+/* Página do Jogo */
+#timer {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50; /* Verde */
+}
+
+.game-container {
+    display: grid;
+    gap: 10px;
+    perspective: 1000px; /* Efeito 3D para as cartas */
+}
+
+/* Definição de colunas para cada nível de dificuldade */
+.cards-12 { grid-template-columns: repeat(4, 1fr); }
+.cards-20 { grid-template-columns: repeat(5, 1fr); }
+.cards-30 { grid-template-columns: repeat(6, 1fr); }
+.cards-60 { grid-template-columns: repeat(10, 1fr); }
+
+
+/* Estilo das Cartas */
+.card {
+    background-color: transparent;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Garante que a carta seja quadrada */
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde o lado de trás da face */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card-front {
+    background: #32CD32; /* Verde Lima */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-front img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.card-back {
+    background: url('images/card-back.png') center/cover;
+    transform: rotateY(180deg);
+}
+
+.btn-voltar {
+    margin-top: 20px;
+    background-color: #FF6347; /* Tomate */
+    color: white;
+    box-shadow: 0 4px #d14836;
+}
+.btn-voltar:hover {
+    box-shadow: 0 6px #d14836;
+}
+.btn-voltar:active {
+    box-shadow: 0 2px #d14836;
+}
+
+
+/* Responsividade para Tablets e Celulares */
+@media (max-width: 768px) {
+    .cards-30 { grid-template-columns: repeat(5, 1fr); }
+    .cards-60 { grid-template-columns: repeat(6, 1fr); }
+}
+
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    h1 { font-size: 1.8em; }
+    .cards-12 { grid-template-columns: repeat(3, 1fr); }
+    .cards-20 { grid-template-columns: repeat(4, 1fr); }
+    .cards-30 { grid-template-columns: repeat(3, 1fr); }
+    .cards-60 { grid-template-columns: repeat(5, 1fr); }
+    .btn-menu, .btn-voltar { font-size: 1em; padding: 12px 25px; }
+}
+
+.barra_superior {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #1a1c23;
+  display: flex;
+  align-items: center;
+  padding: 0 2%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.barra_left,
+.barra_centro,
+.barra_right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.barra_left {
+  justify-content: flex-start;
+}
+
+.barra_centro {
+  justify-content: center;
+}
+
+.barra_right {
+  justify-content: flex-end;
+}
+
+.barra_right img {
+  height: 40px;
+  width: auto;
+}
+
+.barra_inferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  width: 100%;
+  background-color: #1a1c23;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.barra_texto {
+  text-align: center;
+}
+
+.barra_left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 250px;
+  margin-right: 0%;
+}
